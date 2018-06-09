@@ -1,0 +1,48 @@
+import java.util.Iterator;
+import java.util.Set;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+
+public class quitEx {
+
+	public static void main(String[] args) {
+		WebDriver driver = new FirefoxDriver();
+		driver.get("https://www.naukri.com/");
+		
+		//driver.close();
+		//driver.quit();
+		
+		Set<String> allWindowHandles= driver.getWindowHandles();
+		Iterator<String> iterate = allWindowHandles.iterator();
+		/*System.out.println(iterate.next());
+		System.out.println(iterate.next());
+		System.out.println(iterate.next());*/
+		
+		
+		while(iterate.hasNext()){
+			System.out.println(iterate.next());
+			driver.switchTo().window(iterate.next());
+			if(driver.getTitle().contentEquals("Amazon")){
+				driver.close();
+			}
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	}
+
+}

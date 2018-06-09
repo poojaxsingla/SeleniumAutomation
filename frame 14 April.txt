@@ -1,0 +1,45 @@
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+
+public class frame {
+
+	public static void main(String[] args) throws InterruptedException {
+		WebDriver driver = new FirefoxDriver();
+		/*driver.get("http://jqueryui.com/button/");
+		driver.switchTo().frame(driver.findElement(By.className("demo-frame")));
+		driver.switchTo().frame(0);
+		driver.findElement(By.xpath("html/body/div[1]/button")).click();
+		
+		List<WebElement> allframes = driver.findElements(By.tagName("iframes"));
+		System.out.println(allframes.size());*/
+		
+		driver.get("http://jqueryui.com/checkboxradio/");
+		driver.switchTo().frame(0);
+		driver.findElement(By.xpath("html/body/div[1]/fieldset[1]/label[1]/span[1]")).click();
+		driver.switchTo().defaultContent();
+		driver.findElement(By.xpath("//*[@id='sidebar']/aside[2]/ul/li[3]/a")).click();
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+
+	}
+
+}

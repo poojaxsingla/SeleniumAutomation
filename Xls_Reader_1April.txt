@@ -1,0 +1,46 @@
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+
+public class Xls_Reader {
+	
+	public String path;
+	public static FileInputStream fis;
+	public static XSSFWorkbook workbook;
+	public static XSSFSheet sheet;
+	public static XSSFCell cell;
+	
+	public Xls_Reader(String path) throws IOException{
+		fis = new FileInputStream(path);
+		workbook=new XSSFWorkbook(fis);
+		sheet=workbook.getSheet("Sheet1");
+	}
+	
+	public static String getCellData(String sheetName,int rowNo,int colNo){
+		cell=workbook.getSheet(sheetName).getRow(rowNo).getCell(colNo);
+		if(cell.getCellType()==Cell.CELL_TYPE_STRING){
+			return cell.getStringCellValue();
+		}else if(cell.getCellType()==Cell.CELL_TYPE_NUMERIC){
+			return String.valueOf(cell.getNumericCellValue());
+		}else if(cell.getCellType()==Cell.CELL_TYPE_BOOLEAN){
+			return String.valueOf(cell.getBooleanCellValue());
+		}
+		return null;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+}

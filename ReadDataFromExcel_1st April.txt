@@ -1,0 +1,72 @@
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Properties;
+
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+
+public class ReadDataFromExcel {
+
+	public static void main(String[] args) throws IOException {
+		WebDriver driver = new FirefoxDriver();
+		driver.get("http://newtours.demoaut.com");
+		
+		FileInputStream fis = new FileInputStream("C:\\JavaConcepts\\MyFirstWebDriverProject\\src\\OR.properties");
+		Properties prop = new Properties();
+		prop.load(fis);
+		
+		Xls_Reader excel = new Xls_Reader("C:\\Book1.xlsx");
+		//FileInputStream fis1 = new FileInputStream("C:\\Book1.xlsx");
+		//XSSFWorkbook workbook = new XSSFWorkbook(fis1);
+		//XSSFSheet sheet = workbook.getSheet("Sheet2");
+		
+		//driver.findElement(By.xpath(prop.getProperty("x"))).sendKeys(sheet.getRow(0).getCell(0).getStringCellValue());
+		
+		driver.findElement(By.xpath(prop.getProperty("x"))).sendKeys(excel.getCellData("Sheet2", 0, 0));
+		driver.findElement(By.xpath(prop.getProperty("y"))).sendKeys(excel.getCellData("Sheet2", 0, 1));
+		driver.findElement(By.xpath(prop.getProperty("z"))).click();
+		
+		
+		/*driver.findElement(By.xpath(prop.getProperty("y"))).sendKeys(sheet.getRow(0).getCell(1).getStringCellValue());
+		driver.findElement(By.xpath(prop.getProperty("z"))).click();
+		*/
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+
+	}
+	
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
